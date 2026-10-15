@@ -18,12 +18,11 @@ public class Payment {
 		return balance;
 	}
 
-	public void doTransfer(double amount, Payment user2) {
+	public void doTransfer(double amount, Payment user) {
 		if (amount >= 0) {
 			this.balance -= amount;
-			System.out.println(amount + " Amount transferred successfully to user");
-			user2.balance += amount;
-			System.out.println(amount + " Amount credited successfully to " + user2.accountHolderName);
+			System.out.println(amount + " Amount transferred successfully to " + user.accountHolderName);
+			user.balance += amount;
 
 		} else {
 			System.err.println("Amount is invalid \n please try again..");
@@ -54,7 +53,7 @@ public class Payment {
 
 	}
 
-	public void doTransaction() {
+	public void doTransaction(Payment user) {
 
 		while (true) {
 			System.out.println("1.Fund Transfer\n2.Withdrawl\n3.Credit\n4.Check Balance\n5.exit");
@@ -65,7 +64,7 @@ public class Payment {
 			if (n == 1) {
 				System.out.print("Enter amount : ");
 				double amt = sc.nextDouble();
-				this.doTransfer(amt, null);
+				this.doTransfer(amt, user);
 			} else if (n == 2) {
 				System.out.print("Enter amount : ");
 				double amt = sc.nextDouble();
@@ -75,7 +74,9 @@ public class Payment {
 				double amt = sc.nextDouble();
 				this.doCredit(amt);
 			} else if (n == 4) {
-				System.out.println("Current Balance: " + this.getBalance());
+				
+				System.out.println("sender user  Balance: " + this.getBalance());
+				System.out.println("reciver user  Balance: " + user.getBalance());
 
 			} else if (n == 5) {
 				System.out.println("Thankyou for banking with us");
