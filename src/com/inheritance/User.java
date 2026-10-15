@@ -12,6 +12,7 @@ public class User {
 		Product product2 = new ClothingProduct("Shirt", "well fitted and comfort", "cotton", "normal machine wash", "all except funera");
 		
 		product2.details();
+		System.out.println("end");
 
 	}
 
